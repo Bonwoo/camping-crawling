@@ -1,5 +1,5 @@
-# mask--crawling
-마스크 크롤링  
+# camping-crawling
+캠핑 크롤링  
 
 # 필요모듈
 pip install python-telegram-bot (텔레그램 봇)  
