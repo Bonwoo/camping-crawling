@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import time
 import lib_main
-
+ 
 MASK_LIST = {'초소형80':r'https://www.coupang.com/vp/products/189756745',\
              '초소형94':r'https://www.coupang.com/vp/products/189756756',\
              '대형94'  :r'https://www.coupang.com/vp/products/11321008?itemId=48917109'}
