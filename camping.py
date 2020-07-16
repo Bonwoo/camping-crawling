@@ -33,7 +33,7 @@ def getTime():
 # 텔레그램 메시지 전송
 def sendMsg(msg):
     print(msg)
-    #lib_main.sendTelegram(msg) # 텔레그램 전송
+    lib_main.sendTelegram(msg) # 텔레그램 전송
 
 
 # URL
