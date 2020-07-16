@@ -2,11 +2,10 @@ import requests
 from bs4 import BeautifulSoup
 import time
 import lib_main
- 
-MASK_LIST = {'초소형80':r'https://www.coupang.com/vp/products/189756745',\
-             '초소형94':r'https://www.coupang.com/vp/products/189756756',\
-             '대형94'  :r'https://www.coupang.com/vp/products/11321008?itemId=48917109'}
 
+#날짜 입력 전 기본 URL
+DEFAULT_URL = 'https://camping.gtdc.or.kr/DZ_reservation/reserCamping.php?xch=reservation&xid=camping_reservation&searchDate='             
+            
 INTERVAL_SECOND = 10 # 조회간격(초)
 
 def getStock(url):
@@ -38,19 +37,36 @@ def getMask():
     
     return mask
 
-# mask의 URL
-def getUrl(mask):
-    return MASK_LIST.get(mask, None)
+# URL
+def getUrl(date):
+    return DEFAULT_URL+date[:6]
+
+
+# 작업일자를 입력받아 리턴
+def getDate():
+    date = input("작업일자(YYYYMMDD) : ")
+    #print(date.isdigit())
+    return date
+
+# 작업구역을 입력받아 리턴
+def getArea():
+    area = input("작업구역(A-E) : ")
+    #print(area.isalpha())
+    return area
 
 
 # 크롤러 시작
 def startCrawler():
     
-    mask = getMask() # 작업 선택
-    url = getUrl(mask) # 작업의 URL 
-        
+    date = getDate() # 작업일자
+    area = getArea() # 작업구역
+    url = getUrl(date)
+    print('작업일자 : {}'.format(date))
+    print('작업구역 : {}'.format(area))
+    print('URL : {}'.format(url))
+    '''       
     if url is None :
-        msg = '쿠팡 크롤러[{}]를 시작할 수 없습니다.({})'.format(url, getTime())
+        msg = '크롤러[{}]를 시작할 수 없습니다.({})'.format(url, getTime())
         sendMsg(msg)
         return
     
@@ -70,7 +86,8 @@ def startCrawler():
             sendMsg(msg)
             sendMsg(url)           
             
-        time.sleep(INTERVAL_SECOND)       
+        time.sleep(INTERVAL_SECOND)
+    '''       
 
 
 # MAIN 으로 동작시키기 
